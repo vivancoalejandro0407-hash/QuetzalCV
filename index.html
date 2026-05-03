@@ -635,13 +635,14 @@ h1 span{color:var(--dorado)}
 <!-- LOADER -->
 <div id="ldr">
   <div class="spin"></div>
-  <div class="ltit">Analizando tu CV...</div>
+  <div class="ltit" id="ldr-title">Analizando tu CV...</div>
+  <div style="font-size:0.78rem;color:rgba(245,240,232,0.35);margin-top:-1rem;margin-bottom:0.5rem">Como lo haría un reclutador en <span id="lpais-txt">México</span></div>
   <ul class="lsteps">
-    <li class="ls act" id="s1"><span class="ld"></span>Extrayendo texto del PDF</li>
-    <li class="ls" id="s2"><span class="ld"></span>Auditando experiencia y logros</li>
-    <li class="ls" id="s3"><span class="ld"></span>Detectando gaps para <span id="lpais-txt">México</span></li>
-    <li class="ls" id="s4"><span class="ld"></span>Generando diagnóstico ejecutivo</li>
-    <li class="ls" id="s5"><span class="ld"></span>Preparando recomendaciones del experto</li>
+    <li class="ls act" id="s1"><span class="ld"></span><span id="s1-txt">Analizando tu CV como lo haría un reclutador en 6 segundos...</span></li>
+    <li class="ls" id="s2"><span class="ld"></span><span id="s2-txt">Detectando por qué podrías estar siendo descartado...</span></li>
+    <li class="ls" id="s3"><span class="ld"></span><span id="s3-txt">Comparando tu perfil con lo que pide el mercado...</span></li>
+    <li class="ls" id="s4"><span class="ld"></span><span id="s4-txt">Identificando lo que no estás comunicando bien...</span></li>
+    <li class="ls" id="s5"><span class="ld"></span><span id="s5-txt">Generando tu diagnóstico real...</span></li>
   </ul>
 </div>
 
@@ -1126,6 +1127,15 @@ function hideErr(){document.getElementById('err').classList.remove('show')}
 // ── LOADER ──
 function startLoader(){
   document.getElementById('lpais-txt').textContent=pais;
+  const msgs={
+    'México':['Analizando tu CV como lo haría un reclutador en México en 6 segundos...','Detectando por qué te están ignorando en OCC y Computrabajo...','Comparando tu perfil con lo que pide el mercado mexicano hoy...','Identificando lo que no estás comunicando bien para empresas en México...','Calculando tu probabilidad real de avanzar a entrevista en México...'],
+    'Colombia':['Analizando tu CV como lo haría un reclutador en Colombia en 6 segundos...','Detectando por qué te están ignorando en Elempleo y LinkedIn Colombia...','Comparando tu perfil con lo que pide el mercado colombiano hoy...','Identificando lo que no estás comunicando bien para empresas en Bogotá...','Calculando tu probabilidad real de avanzar a entrevista en Colombia...'],
+    'Argentina':['Analizando tu CV como lo haría un reclutador en Argentina en 6 segundos...','Detectando por qué te están ignorando en Bumeran y Zonajobs...','Comparando tu perfil con lo que pide el mercado argentino hoy...','Identificando lo que no estás comunicando bien para empresas en Buenos Aires...','Calculando tu probabilidad real de avanzar a entrevista en Argentina...'],
+    'Chile':['Analizando tu CV como lo haría un reclutador en Chile en 6 segundos...','Detectando por qué te están ignorando en Trabajando.com y LinkedIn Chile...','Comparando tu perfil con lo que pide el mercado chileno hoy...','Identificando lo que no estás comunicando bien para empresas en Santiago...','Calculando tu probabilidad real de avanzar a entrevista en Chile...'],
+    'Perú':['Analizando tu CV como lo haría un reclutador en Perú en 6 segundos...','Detectando por qué te están ignorando en Bumeran Perú y Computrabajo...','Comparando tu perfil con lo que pide el mercado peruano hoy...','Identificando lo que no estás comunicando bien para empresas en Lima...','Calculando tu probabilidad real de avanzar a entrevista en Perú...']
+  };
+  const m=msgs[pais]||['Analizando tu CV como lo haría un reclutador en 6 segundos...','Detectando por qué podrías estar siendo descartado...','Comparando tu perfil con lo que pide el mercado en '+pais+'...','Identificando lo que no estás comunicando bien...','Calculando tu probabilidad real de avanzar a entrevista en '+pais+'...'];
+  ['s1','s2','s3','s4','s5'].forEach((id,i)=>{const el=document.getElementById(id+'-txt');if(el&&m[i])el.textContent=m[i];});
   document.getElementById('ldr').classList.add('on');
   STEPS.forEach((s,i)=>document.getElementById(s).className='ls'+(i===0?' act':''));
   let si=0;
