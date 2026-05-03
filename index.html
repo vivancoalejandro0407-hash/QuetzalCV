@@ -1194,7 +1194,7 @@ function isValidCode(code){
   const n=parseInt(m[1]);
   return n===1001;
 }
-function formatCode(input){let v=input.value.toUpperCase().replace(/[^A-Z0-9]/g,'');if(v.length>5)v=v.slice(0,5)+'-'+v.slice(5);if(v.length>10)v=v.slice(0,10)+'-'+v.slice(10);input.value=v.slice(0,14);document.getElementById('pm-err').classList.remove('show');input.classList.remove('error');}
+function formatCode(input){let v=input.value.toUpperCase().replace(/[^A-Z0-9]/g,'');if(v.length>5)v=v.slice(0,5)+'-'+v.slice(5);if(v.length>10)v=v.slice(0,10)+'-'+v.slice(10);input.value=v.slice(0,15);document.getElementById('pm-err').classList.remove('show');input.classList.remove('error');}
 function openProModal(){if(proUnlocked){downloadCV();return;}document.getElementById('pro-modal').classList.add('on');document.getElementById('pm-input').value='';document.getElementById('pm-err').classList.remove('show');document.getElementById('pm-form-view').style.display='block';document.getElementById('pm-success-view').classList.remove('show');document.getElementById('pm-input').classList.remove('error','success');setTimeout(()=>document.getElementById('pm-input').focus(),200);}
 function verifyCode(){
   const input=document.getElementById('pm-input');
