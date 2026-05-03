@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quetzal-CV · Crea tu primer CV</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230B1F3A'/><ellipse cx='50' cy='45' rx='22' ry='30' fill='%2300C896'/><ellipse cx='50' cy='58' rx='14' ry='18' fill='%23E83A2A'/><circle cx='50' cy='22' r='16' fill='%2300C896'/></svg>">
+<meta name="description" content="Crea tu primer CV profesional paso a paso con IA. Gratis, en minutos, listo para LATAM.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,700;0,900;1,700;1,900&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --esmeralda:#00A87A;--esmeralda2:#008F68;--esmeralda3:#00C896;
+  --noche:#0F2235;--noche2:#081628;--rojo:#D4341E;
+  --dorado:#C8900A;--arena:#F7F2EA;--blanco:#FFFDF8;
+  --fd:'Fraunces',serif;--fb:'Plus Jakarta Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);color:var(--noche);min-height:100vh;overflow-x:hidden;background-color:#F7F2EA;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(7,20,40,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,200,150,0.08)}
+.logo{font-family:var(--fd);font-size:1.1rem;font-weight:900;color:var(--arena);text-decoration:none;letter-spacing:-0.02em;display:flex;align-items:center;gap:8px}
+.nav-back{color:rgba(245,240,232,0.45);font-size:0.78rem;text-decoration:none;display:flex;align-items:center;gap:5px;transition:color 0.2s}
+.nav-back:hover{color:var(--esmeralda3)}
+.hero{padding:8rem 2rem 3rem;max-width:700px;margin:0 auto;text-align:center}
+.chip{display:inline-flex;align-items:center;gap:7px;background:rgba(0,120,80,0.08);border:1px solid rgba(0,120,80,0.18);border-radius:100px;padding:0.38rem 1rem;font-size:0.7rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:#065C3A;margin-bottom:1.5rem}
+.chip-dot{width:5px;height:5px;border-radius:50%;background:var(--esmeralda);animation:blink 2s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+h1{font-family:var(--fd);font-size:clamp(2rem,5vw,3.2rem);font-weight:900;line-height:1;letter-spacing:-0.03em;margin-bottom:1rem;color:var(--noche)}
+h1 em{font-style:italic;color:var(--esmeralda2)}
+.sub{font-size:0.95rem;color:rgba(15,34,53,0.55);line-height:1.7;margin-bottom:3rem;max-width:480px;margin-left:auto;margin-right:auto}
+.form-wrap{background:var(--blanco);border:1px solid rgba(0,120,80,0.1);border-radius:20px;padding:2rem;max-width:640px;margin:0 auto 3rem;box-shadow:0 4px 24px rgba(15,34,53,0.06)}
+.step-indicator{display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:2rem}
+.step-dot{width:8px;height:8px;border-radius:50%;background:rgba(15,34,53,0.1);transition:all 0.3s}
+.step-dot.active{background:var(--esmeralda);width:24px;border-radius:4px}
+.step-dot.done{background:var(--esmeralda);opacity:0.4}
+.step{display:none}
+.step.active{display:block}
+.step-title{font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--noche);margin-bottom:0.4rem}
+.step-sub{font-size:0.83rem;color:rgba(15,34,53,0.45);margin-bottom:1.5rem;line-height:1.5}
+.field{margin-bottom:1.25rem}
+.field label{display:block;font-size:0.78rem;font-weight:600;color:rgba(15,34,53,0.55);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.5rem}
+.field input,.field textarea,.field select{width:100%;padding:0.75rem 1rem;border:1px solid rgba(15,34,53,0.12);border-radius:10px;font-family:var(--fb);font-size:0.88rem;color:var(--noche);background:var(--blanco);outline:none;transition:border 0.2s;resize:vertical}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--esmeralda)}
+.field textarea{min-height:80px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.btn-next{width:100%;padding:0.85rem;background:var(--esmeralda);color:#fff;font-family:var(--fb);font-size:0.9rem;font-weight:700;border:none;border-radius:12px;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:0.5rem}
+.btn-next:hover{background:var(--esmeralda2);transform:translateY(-1px)}
+.btn-back{background:transparent;border:1px solid rgba(15,34,53,0.12);color:rgba(15,34,53,0.45);font-family:var(--fb);font-size:0.82rem;padding:0.55rem 1.1rem;border-radius:8px;cursor:pointer;margin-bottom:1rem;transition:all 0.2s}
+.btn-back:hover{border-color:var(--esmeralda);color:var(--esmeralda)}
+.add-btn{display:flex;align-items:center;gap:6px;color:var(--esmeralda);font-size:0.82rem;font-weight:600;cursor:pointer;background:rgba(0,168,122,0.05);border:1px dashed rgba(0,168,122,0.25);border-radius:8px;padding:0.55rem 1rem;width:100%;justify-content:center;transition:all 0.2s;margin-top:0.5rem}
+.add-btn:hover{background:rgba(0,168,122,0.1)}
+.exp-block{background:rgba(15,34,53,0.02);border:1px solid rgba(15,34,53,0.08);border-radius:10px;padding:1rem;margin-bottom:0.75rem;position:relative}
+.exp-remove{position:absolute;top:0.6rem;right:0.75rem;font-size:0.75rem;color:rgba(15,34,53,0.3);cursor:pointer;transition:color 0.2s}
+.exp-remove:hover{color:var(--rojo)}
+.generating{text-align:center;padding:2rem}
+.gen-spin{width:40px;height:40px;border:3px solid rgba(0,168,122,0.15);border-top-color:var(--esmeralda);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 1rem}
+@keyframes spin{to{transform:rotate(360deg)}}
+.gen-txt{font-family:var(--fd);font-size:1rem;font-weight:700;color:var(--noche);margin-bottom:0.4rem}
+.gen-sub{font-size:0.82rem;color:rgba(15,34,53,0.4)}
+.result-box{background:var(--noche);border-radius:16px;padding:2rem;text-align:center;margin-bottom:1.5rem}
+.result-name{font-family:var(--fd);font-size:1.4rem;font-weight:900;color:var(--arena);margin-bottom:0.5rem}
+.result-sub{font-size:0.82rem;color:rgba(245,240,232,0.4);margin-bottom:1.5rem}
+.dl-btns{display:flex;flex-direction:column;gap:0.75rem}
+.dl-btn{padding:0.85rem;border-radius:12px;font-family:var(--fb);font-size:0.88rem;font-weight:700;cursor:pointer;border:none;display:flex;align-items:center;justify-content:center;gap:8px;transition:all 0.2s}
+.dl-btn.primary{background:var(--esmeralda);color:#fff}
+.dl-btn.primary:hover{background:var(--esmeralda2)}
+.dl-btn.secondary{background:rgba(245,240,232,0.06);color:rgba(245,240,232,0.6);border:1px solid rgba(245,240,232,0.1)}
+.dl-btn.secondary:hover{background:rgba(245,240,232,0.1)}
+.pro-tip{background:rgba(0,168,122,0.06);border:1px solid rgba(0,168,122,0.15);border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:0.83rem;color:rgba(15,34,53,0.6);line-height:1.6}
+.pro-tip strong{color:var(--esmeralda2)}
+@media(max-width:500px){.row2{grid-template-columns:1fr}.hero{padding:7rem 1.25rem 2rem}.form-wrap{padding:1.5rem 1.25rem}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <svg viewBox="0 0 80 100" fill="none" width="22" height="28">
+      <path d="M40 10 C52 10 62 20 62 34 C62 48 52 56 40 58 C28 56 18 48 18 34 C18 20 28 10 40 10Z" fill="#00C896"/>
+      <path d="M40 30 C48 30 54 38 52 46 C50 54 44 58 40 58 C36 58 30 54 28 46 C26 38 32 30 40 30Z" fill="#E83A2A"/>
+      <circle cx="40" cy="18" r="10" fill="#00C896"/>
+      <path d="M40 8 C44 4 50 2 48 8 C46 12 42 12 40 14 C38 12 34 12 32 8 C30 2 36 4 40 8Z" fill="#00A87A"/>
+      <circle cx="44" cy="16" r="3" fill="#fff"/>
+      <circle cx="44.5" cy="16" r="1.8" fill="#0B1F3A"/>
+      <path d="M50 20 L60 17 L50 23 Z" fill="#F5C842"/>
+      <path d="M32 58 Q20 75 14 95 Q24 80 36 65Z" fill="#00C896"/>
+      <path d="M37 60 Q28 78 24 96 Q34 80 40 67Z" fill="#00C896" opacity="0.7"/>
+      <path d="M43 60 Q38 78 36 96 Q44 80 46 67Z" fill="#008F68" opacity="0.6"/>
+      <path d="M47 59 Q46 76 46 94 Q52 78 50 65Z" fill="#006650" opacity="0.5"/>
+    </svg>
+    Quetzal-CV
+  </a>
+  <a href="index.html" class="nav-back">← Volver al diagnóstico</a>
+</nav>
+
+<div class="hero">
+  <div class="chip"><span class="chip-dot"></span>Paso a paso · Gratis · Sin cuenta</div>
+  <h1>Tu primer CV,<br><em>hecho bien</em> desde el inicio.</h1>
+  <p class="sub">Responde algunas preguntas y te generamos un CV profesional listo para enviar en LATAM. Sin plantillas genéricas.</p>
+</div>
+
+<div class="form-wrap" id="form-wrap">
+
+  <div class="step-indicator" id="steps-indicator">
+    <div class="step-dot active" id="dot-0"></div>
+    <div class="step-dot" id="dot-1"></div>
+    <div class="step-dot" id="dot-2"></div>
+    <div class="step-dot" id="dot-3"></div>
+    <div class="step-dot" id="dot-4"></div>
+  </div>
+
+  <!-- PASO 1: Datos personales -->
+  <div class="step active" id="step-0">
+    <div class="step-title">¿Quién eres?</div>
+    <div class="step-sub">Empezamos con lo básico — tu nombre y perfil.</div>
+    <div class="field"><label>Nombre completo *</label><input type="text" id="nombre" placeholder="Ej. Sofía Ramírez Torres"></div>
+    <div class="row2">
+      <div class="field"><label>Ciudad</label><input type="text" id="ciudad" placeholder="Ej. Guadalajara"></div>
+      <div class="field"><label>País</label><select id="pais">
+        <option>México</option><option>Colombia</option><option>Argentina</option>
+        <option>Chile</option><option>Perú</option><option>Venezuela</option>
+        <option>Ecuador</option><option>Bolivia</option><option>Uruguay</option>
+        <option>Paraguay</option><option>Costa Rica</option><option>Guatemala</option>
+        <option>Honduras</option><option>Nicaragua</option><option>Rep. Dominicana</option>
+        <option>Panamá</option>
+      </select></div>
+    </div>
+    <div class="field"><label>Correo electrónico</label><input type="email" id="email" placeholder="tu@correo.com"></div>
+    <div class="field"><label>Teléfono / WhatsApp</label><input type="text" id="tel" placeholder="+52 33 1234 5678"></div>
+    <div class="field"><label>LinkedIn (opcional)</label><input type="text" id="linkedin" placeholder="linkedin.com/in/tu-perfil"></div>
+    <button class="btn-next" onclick="goStep(1)">Continuar →</button>
+  </div>
+
+  <!-- PASO 2: Perfil profesional -->
+  <div class="step" id="step-1">
+    <button class="btn-back" onclick="goStep(0)">← Atrás</button>
+    <div class="step-title">¿A qué te dedicas?</div>
+    <div class="step-sub">Cuéntanos tu área y lo que buscas — lo redactamos con voz ejecutiva.</div>
+    <div class="field"><label>Área o profesión *</label><input type="text" id="area" placeholder="Ej. Administración, Ingeniería, Ventas, Marketing..."></div>
+    <div class="field"><label>¿Qué tipo de puesto buscas? *</label><input type="text" id="puesto-objetivo" placeholder="Ej. Coordinador de Ventas, Analista de Datos..."></div>
+    <div class="field"><label>¿Cuántos años de experiencia tienes?</label><select id="experiencia">
+      <option value="0">Sin experiencia / Recién egresado</option>
+      <option value="1">Menos de 1 año</option>
+      <option value="2">1 a 3 años</option>
+      <option value="5">3 a 5 años</option>
+      <option value="8">5 a 10 años</option>
+      <option value="15">Más de 10 años</option>
+    </select></div>
+    <div class="field"><label>¿Cuál es tu mayor fortaleza o habilidad?</label><textarea id="fortaleza" placeholder="Ej. Soy muy bueno para organizar equipos y cumplir metas bajo presión..."></textarea></div>
+    <button class="btn-next" onclick="goStep(2)">Continuar →</button>
+  </div>
+
+  <!-- PASO 3: Educación -->
+  <div class="step" id="step-2">
+    <button class="btn-back" onclick="goStep(1)">← Atrás</button>
+    <div class="step-title">Tu formación</div>
+    <div class="step-sub">Escuela, carrera y año de egreso. Si no terminaste, escribe hasta dónde llegaste.</div>
+    <div class="field"><label>Carrera o área de estudio *</label><input type="text" id="carrera" placeholder="Ej. Licenciatura en Administración de Empresas"></div>
+    <div class="field"><label>Institución *</label><input type="text" id="escuela" placeholder="Ej. Universidad de Guadalajara"></div>
+    <div class="row2">
+      <div class="field"><label>Año de inicio</label><input type="text" id="edu-inicio" placeholder="2018"></div>
+      <div class="field"><label>Año de egreso</label><input type="text" id="edu-fin" placeholder="2022 o En curso"></div>
+    </div>
+    <div class="field"><label>Cursos, certificaciones o idiomas destacados</label><textarea id="extras" placeholder="Ej. Excel avanzado, inglés intermedio, certificación en Google Analytics..."></textarea></div>
+    <button class="btn-next" onclick="goStep(3)">Continuar →</button>
+  </div>
+
+  <!-- PASO 4: Experiencia -->
+  <div class="step" id="step-3">
+    <button class="btn-back" onclick="goStep(2)">← Atrás</button>
+    <div class="step-title">Tu experiencia laboral</div>
+    <div class="step-sub">Agrega tus trabajos más recientes. Si no tienes, puedes poner proyectos, servicio social o voluntariados.</div>
+    <div id="exp-container">
+      <div class="exp-block" id="exp-0">
+        <div class="field"><label>Puesto</label><input type="text" class="exp-puesto" placeholder="Ej. Auxiliar Administrativo"></div>
+        <div class="field"><label>Empresa</label><input type="text" class="exp-empresa" placeholder="Ej. Grupo Bimbo"></div>
+        <div class="row2">
+          <div class="field"><label>Fecha inicio</label><input type="text" class="exp-inicio" placeholder="Ene 2022"></div>
+          <div class="field"><label>Fecha fin</label><input type="text" class="exp-fin" placeholder="Dic 2023 o Actual"></div>
+        </div>
+        <div class="field"><label>¿Qué hacías y qué lograste?</label><textarea class="exp-desc" placeholder="Ej. Coordiné agenda de gerencia, reduje tiempos de respuesta en 30%, apoyé a 5 departamentos..."></textarea></div>
+      </div>
+    </div>
+    <div class="add-btn" onclick="addExp()">+ Agregar otro trabajo</div>
+    <button class="btn-next" style="margin-top:1.25rem" onclick="generarCV()">
+      <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"/></svg>
+      Generar mi CV con IA
+    </button>
+  </div>
+
+  <!-- PASO 5: Resultado -->
+  <div class="step" id="step-4">
+    <div id="generating" class="generating">
+      <div class="gen-spin"></div>
+      <div class="gen-txt">Creando tu CV...</div>
+      <div class="gen-sub">La IA está redactando con voz ejecutiva</div>
+    </div>
+    <div id="resultado" style="display:none">
+      <div class="result-box">
+        <div class="result-name" id="res-nombre"></div>
+        <div class="result-sub">Tu CV está listo para descargar</div>
+        <div class="dl-btns">
+          <button class="dl-btn primary" onclick="descargarPDF('harvard')">
+            <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"/></svg>
+            Descargar CV — Estilo Harvard
+          </button>
+          <button class="dl-btn secondary" onclick="descargarPDF('clasico')">Descargar — Estilo Clásico</button>
+          <button class="dl-btn secondary" onclick="descargarPDF('moderno')">Descargar — Estilo Moderno</button>
+        </div>
+      </div>
+      <div class="pro-tip">
+        <strong>¿Quieres que Alejandro lo revise y optimice?</strong><br>
+        Este CV es un buen punto de partida. Con el Plan Pro, Alejandro lo transforma con 15 años de criterio real de reclutador — reescribe logros, optimiza para ATS y lo deja listo para competir en serio.
+        <br><br>
+        <a href="index.html" style="color:var(--esmeralda2);font-weight:600;text-decoration:none">Ir al diagnóstico gratuito →</a>
+      </div>
+      <button class="btn-back" onclick="goStep(3)" style="width:100%;text-align:center">← Editar información</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let currentStep = 0;
+let cvGenerado = null;
+let expCount = 1;
+
+function goStep(n) {
+  if (n === 1 && !document.getElementById('nombre').value.trim()) {
+    alert('Por favor ingresa tu nombre completo.');
+    return;
+  }
+  if (n === 2 && !document.getElementById('area').value.trim()) {
+    alert('Por favor ingresa tu área o profesión.');
+    return;
+  }
+  document.getElementById('step-' + currentStep).classList.remove('active');
+  document.getElementById('dot-' + currentStep).classList.remove('active');
+  document.getElementById('dot-' + currentStep).classList.add('done');
+  currentStep = n;
+  document.getElementById('step-' + currentStep).classList.add('active');
+  document.getElementById('dot-' + currentStep).classList.remove('done');
+  document.getElementById('dot-' + currentStep).classList.add('active');
+  window.scrollTo({top: document.getElementById('form-wrap').offsetTop - 80, behavior: 'smooth'});
+}
+
+function addExp() {
+  const container = document.getElementById('exp-container');
+  const div = document.createElement('div');
+  div.className = 'exp-block';
+  div.id = 'exp-' + expCount;
+  div.innerHTML = `
+    <span class="exp-remove" onclick="this.parentElement.remove()">✕ Quitar</span>
+    <div class="field"><label>Puesto</label><input type="text" class="exp-puesto" placeholder="Ej. Vendedor"></div>
+    <div class="field"><label>Empresa</label><input type="text" class="exp-empresa" placeholder="Ej. Empresa S.A."></div>
+    <div class="row2">
+      <div class="field"><label>Fecha inicio</label><input type="text" class="exp-inicio" placeholder="Ene 2020"></div>
+      <div class="field"><label>Fecha fin</label><input type="text" class="exp-fin" placeholder="Dic 2021"></div>
+    </div>
+    <div class="field"><label>¿Qué hacías y qué lograste?</label><textarea class="exp-desc" placeholder="Describe tus responsabilidades y logros..."></textarea></div>
+  `;
+  container.appendChild(div);
+  expCount++;
+}
+
+async function generarCV() {
+  goStep(4);
+  document.getElementById('generating').style.display = 'block';
+  document.getElementById('resultado').style.display = 'none';
+
+  const nombre = document.getElementById('nombre').value;
+  const ciudad = document.getElementById('ciudad').value;
+  const pais = document.getElementById('pais').value;
+  const email = document.getElementById('email').value;
+  const tel = document.getElementById('tel').value;
+  const linkedin = document.getElementById('linkedin').value;
+  const area = document.getElementById('area').value;
+  const puestoObj = document.getElementById('puesto-objetivo').value;
+  const exp = document.getElementById('experiencia').value;
+  const fortaleza = document.getElementById('fortaleza').value;
+  const carrera = document.getElementById('carrera').value;
+  const escuela = document.getElementById('escuela').value;
+  const eduInicio = document.getElementById('edu-inicio').value;
+  const eduFin = document.getElementById('edu-fin').value;
+  const extras = document.getElementById('extras').value;
+
+  const bloques = document.querySelectorAll('.exp-block');
+  let expTexto = '';
+  bloques.forEach(b => {
+    const p = b.querySelector('.exp-puesto')?.value;
+    const e = b.querySelector('.exp-empresa')?.value;
+    const i = b.querySelector('.exp-inicio')?.value;
+    const f = b.querySelector('.exp-fin')?.value;
+    const d = b.querySelector('.exp-desc')?.value;
+    if (p || e) expTexto += `- ${p} en ${e} (${i} - ${f}): ${d}\n`;
+  });
+
+  const prompt = `Eres experto en CVs para LATAM. Crea un CV profesional para alguien sin CV previo.
+
+DATOS:
+Nombre: ${nombre}
+Ciudad/País: ${ciudad}, ${pais}
+Email: ${email} | Tel: ${tel} | LinkedIn: ${linkedin}
+Área: ${area} | Puesto objetivo: ${puestoObj}
+Años de experiencia: ${exp}
+Fortaleza: ${fortaleza}
+Educación: ${carrera} - ${escuela} (${eduInicio}-${eduFin})
+Extras: ${extras}
+Experiencia laboral:
+${expTexto || 'Sin experiencia laboral formal'}
+
+Genera un CV completo con voz ejecutiva. Reescribe todo con verbos de acción, métricas STAR y keywords ATS. Si no hay experiencia, crea un perfil de recién egresado sólido.
+
+SOLO JSON válido:
+{
+  "nombre": "${nombre}",
+  "contacto": {"email":"${email}","tel":"${tel}","ciudad":"${ciudad}, ${pais}","linkedin":"${linkedin}"},
+  "perfil": "3-4 líneas ejecutivas con keywords ATS. Primera persona.",
+  "exp": [{"puesto":"Puesto optimizado","empresa":"Empresa","periodo":"Periodo","logros":["Logro STAR","Logro STAR","Logro STAR"]}],
+  "edu": [{"titulo":"${carrera}","inst":"${escuela}","periodo":"${eduInicio} - ${eduFin}"}],
+  "skills": ["KW1","KW2","KW3","KW4","KW5","KW6"]
+}`;
+
+  try {
+    const r = await fetch('/api/analyze', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({max_tokens: 1200, messages: [{role: 'user', content: prompt}]})
+    });
+    const d = await r.json();
+    const rawT = d.content.map(b => b.text || '').join('').replace(/```json|```/g, '').trim();
+    cvGenerado = JSON.parse(rawT);
+    document.getElementById('res-nombre').textContent = cvGenerado.nombre;
+    document.getElementById('generating').style.display = 'none';
+    document.getElementById('resultado').style.display = 'block';
+  } catch(e) {
+    document.getElementById('generating').innerHTML = '<div style="color:#D4341E;font-size:0.88rem">Hubo un error. <a href="" style="color:inherit">Intenta de nuevo</a></div>';
+  }
+}
+
+function descargarPDF(estilo) {
+  if (!cvGenerado) return;
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({orientation: 'portrait', unit: 'mm', format: 'a4'});
+  const W = 210, M = 20, CW = W - M * 2;
+  const d = cvGenerado;
+  const c = d.contacto || {};
+
+  if (estilo === 'harvard') {
+    const DARK=[30,30,30], MID=[90,90,90], LIGHT=[155,155,155], CRIMSON=[165,28,48], BG=[248,246,243];
+    doc.setFont('times','bold'); doc.setFontSize(20); doc.setTextColor(...DARK);
+    doc.text((d.nombre||'').toUpperCase(), M, 22, {maxWidth: CW});
+    doc.setDrawColor(...CRIMSON); doc.setLineWidth(1.2); doc.line(M, 26, W-M, 26);
+    doc.setFont('helvetica','normal'); doc.setFontSize(8); doc.setTextColor(...MID);
+    const info = [c.email, c.tel, c.ciudad, c.linkedin].filter(Boolean).join('  ·  ');
+    doc.text(info, W/2, 31, {align:'center'});
+    let y = 42;
+    function sec(l) { doc.setFont('times','bold'); doc.setFontSize(9); doc.setTextColor(...DARK); doc.text(l.toUpperCase(), M, y); doc.setDrawColor(...CRIMSON); doc.setLineWidth(0.7); doc.line(M, y+1.5, W-M, y+1.5); y += 8; }
+    sec('Perfil Profesional');
+    doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor(...DARK);
+    const pls = doc.splitTextToSize(d.perfil||'', CW); doc.text(pls, M, y); y += pls.length*4+5;
+    sec('Experiencia');
+    (d.exp||[]).forEach(x => {
+      doc.setFillColor(...BG); doc.roundedRect(M, y-3.5, CW, 6, 1, 1, 'F');
+      doc.setFont('helvetica','bold'); doc.setFontSize(9); doc.setTextColor(...DARK); doc.text(x.puesto||'', M+2, y);
+      if(x.periodo){doc.setFont('helvetica','normal'); doc.setFontSize(8); doc.setTextColor(...MID); doc.text(x.periodo, W-M-2, y, {align:'right'});}
+      y+=4; doc.setFont('helvetica','italic'); doc.setFontSize(8.5); doc.setTextColor(...MID); doc.text(x.empresa||'', M+2, y); y+=5;
+      (x.logros||[]).forEach(l => { doc.setFont('helvetica','normal'); doc.setFontSize(8.5); doc.setTextColor(...LIGHT); doc.text('•', M+2, y); doc.setTextColor(...DARK); const ls=doc.splitTextToSize(l,CW-6); doc.text(ls,M+6,y); y+=ls.length*4+1; }); y+=3;
+    });
+    sec('Educación');
+    (d.edu||[]).forEach(e => { doc.setFont('helvetica','bold'); doc.setFontSize(9); doc.setTextColor(...DARK); doc.text(e.titulo||'',M,y); if(e.periodo){doc.setFont('helvetica','normal'); doc.setFontSize(8); doc.setTextColor(...MID); doc.text(e.periodo,W-M,y,{align:'right'});} y+=4; doc.setFont('helvetica','italic'); doc.setFontSize(8.5); doc.text(e.inst||'',M,y); y+=7; });
+    sec('Competencias');
+    doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor(...DARK);
+    doc.text((d.skills||[]).join('  ·  '), M, y, {maxWidth: CW});
+
+  } else if (estilo === 'clasico') {
+    const NAVY=[44,62,122], DARK=[30,30,30], MID=[100,100,100], BG=[240,244,255];
+    doc.setFillColor(...NAVY); doc.rect(0,0,W,40,'F');
+    doc.setFont('helvetica','bold'); doc.setFontSize(18); doc.setTextColor(255,255,255); doc.text((d.nombre||'').toUpperCase(),M,18,{maxWidth:CW});
+    doc.setFont('helvetica','normal'); doc.setFontSize(8.5); doc.setTextColor(180,200,255);
+    doc.text([c.email,c.tel,c.ciudad].filter(Boolean).join(' · '),M,26);
+    let y=52;
+    function sec2(l){doc.setFillColor(...BG);doc.rect(M,y-4,CW,6.5,'F');doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(...NAVY);doc.text(l.toUpperCase(),M+2,y);doc.setDrawColor(...NAVY);doc.setLineWidth(0.3);doc.line(M,y+2,W-M,y+2);y+=9;}
+    sec2('Perfil');
+    doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(...DARK);const pls=doc.splitTextToSize(d.perfil||'',CW);doc.text(pls,M,y);y+=pls.length*4+5;
+    sec2('Experiencia');
+    (d.exp||[]).forEach(x=>{doc.setFont('helvetica','bold');doc.setFontSize(9.5);doc.setTextColor(...DARK);doc.text(x.puesto||'',M,y);if(x.periodo){doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(...MID);doc.text(x.periodo,W-M,y,{align:'right'});}y+=4;doc.setFont('helvetica','italic');doc.setFontSize(8.5);doc.setTextColor(...MID);doc.text(x.empresa||'',M,y);y+=5;(x.logros||[]).forEach(l=>{doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(...MID);doc.text('▸',M+1,y);doc.setTextColor(...DARK);const ls=doc.splitTextToSize(l,CW-6);doc.text(ls,M+5,y);y+=ls.length*4+1;});y+=3;});
+    sec2('Educación');
+    (d.edu||[]).forEach(e=>{doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(...DARK);doc.text(e.titulo||'',M,y);if(e.periodo){doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(...MID);doc.text(e.periodo,W-M,y,{align:'right'});}y+=4;doc.setFont('helvetica','italic');doc.setFontSize(8.5);doc.text(e.inst||'',M,y);y+=7;});
+    sec2('Competencias');
+    let kx=M;(d.skills||[]).forEach((kw,i)=>{const tw=doc.getTextWidth(kw)+8;if(kx+tw>W-M){kx=M;y+=7;}if(i<3){doc.setFillColor(...NAVY);doc.roundedRect(kx,y-4,tw,5.5,1.5,1.5,'F');doc.setFont('helvetica','bold');doc.setFontSize(7.5);doc.setTextColor(255,255,255);}else{doc.setFillColor(...BG);doc.roundedRect(kx,y-4,tw,5.5,1.5,1.5,'F');doc.setFont('helvetica','normal');doc.setFontSize(7.5);doc.setTextColor(...NAVY);}doc.text(kw,kx+tw/2,y,{align:'center'});kx+=tw+4;});
+
+  } else {
+    const SIDE=58, RX=SIDE+8, RCOL=W-SIDE-14;
+    const NOCHE=[11,31,58],ESM=[0,200,150],DARK=[30,30,30],MID=[90,90,90];
+    doc.setFillColor(...NOCHE);doc.rect(0,0,SIDE,297,'F');
+    doc.setFont('times','bold');doc.setFontSize(16);doc.setTextColor(...DARK);doc.text((d.nombre||'').toUpperCase(),RX,18,{maxWidth:RCOL});
+    doc.setDrawColor(...ESM);doc.setLineWidth(1.2);doc.line(RX,21,W-6,21);
+    doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(...MID);
+    doc.text([c.email,c.tel,c.ciudad].filter(Boolean).join(' · '),RX,27,{maxWidth:RCOL});
+    let ly=22;
+    function lsec(l){doc.setFont('helvetica','bold');doc.setFontSize(7.5);doc.setTextColor(...ESM);doc.text(l.toUpperCase(),4,ly);doc.setDrawColor(...ESM);doc.setLineWidth(0.4);doc.line(4,ly+1.5,SIDE-4,ly+1.5);ly+=7;}
+    lsec('Skills');
+    (d.skills||[]).forEach(s=>{if(ly>280)return;const bw=SIDE-10;doc.setFillColor(...ESM);doc.setGState(doc.GState({opacity:0.6}));doc.rect(4,ly-3,bw*0.8,4,'F');doc.setGState(doc.GState({opacity:1}));doc.setFont('helvetica','normal');doc.setFontSize(7);doc.setTextColor(255,255,255);doc.text(s,5.5,ly,{maxWidth:bw-2});ly+=6;});
+    let ry=36;
+    function rsec(l){doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(...NOCHE);doc.text(l.toUpperCase(),RX,ry);doc.setDrawColor(...ESM);doc.setLineWidth(0.5);doc.line(RX,ry+1.5,W-6,ry+1.5);ry+=7;}
+    rsec('Perfil');doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(...DARK);const pls=doc.splitTextToSize(d.perfil||'',RCOL);doc.text(pls,RX,ry);ry+=pls.length*4+5;
+    rsec('Experiencia');
+    (d.exp||[]).forEach(x=>{doc.setFont('helvetica','bold');doc.setFontSize(9.5);doc.setTextColor(...DARK);doc.text(x.puesto||'',RX,ry);if(x.periodo){doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(...MID);doc.text(x.periodo,W-6,ry,{align:'right'});}ry+=4;doc.setFont('helvetica','italic');doc.setFontSize(8.5);doc.setTextColor(...ESM);doc.text(x.empresa||'',RX,ry);ry+=5;(x.logros||[]).forEach(l=>{doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(...ESM);doc.text('▸',RX,ry);doc.setTextColor(...DARK);const ls=doc.splitTextToSize(l,RCOL-5);doc.text(ls,RX+4,ry);ry+=ls.length*4+1;});ry+=3;});
+    rsec('Educación');
+    (d.edu||[]).forEach(e=>{doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(...DARK);doc.text(e.titulo||'',RX,ry);if(e.periodo){doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(...MID);doc.text(e.periodo,W-6,ry,{align:'right'});}ry+=4;doc.setFont('helvetica','italic');doc.setFontSize(8.5);doc.setTextColor(...MID);doc.text(e.inst||'',RX,ry);ry+=7;});
+  }
+
+  doc.save('CV_' + (d.nombre||'Quetzal').replace(/\s+/g,'_') + '_' + estilo + '.pdf');
+}
+</script>
+</body>
+</html>
