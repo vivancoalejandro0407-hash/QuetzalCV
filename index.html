@@ -714,7 +714,6 @@ h1 span{color:var(--dorado)}
         <li>Revisión o rediseño completo del CV con voz ejecutiva personalizada</li>
         <li>Optimización de LinkedIn: titular, extracto y keywords de búsqueda</li>
         <li>Carta de presentación adaptada a tu industria y mercado</li>
-        <li>Sesión 1:1 de 45 min — estrategia de búsqueda + entrevistas</li>
         <li>Seguimiento 30 días hasta conseguir entrevistas confirmadas</li>
       </ul>
       <div style="display:flex;align-items:flex-start;gap:10px;background:rgba(0,200,150,0.06);border:1px solid rgba(0,200,150,0.15);border-radius:10px;padding:1rem 1.1rem;margin-bottom:1.5rem">
@@ -759,8 +758,56 @@ h1 span{color:var(--dorado)}
 
   <!-- SELECTOR PLANTILLAS -->
   <div class="sh" style="margin-top:2.2rem"><div class="sico" style="background:rgba(245,200,66,0.1)"><svg viewBox="0 0 20 20" fill="#F5C842"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg></div><div class="stit">Elige el estilo de tu CV</div><div class="sline"></div></div>
-  <div style="margin-bottom:1.5rem">
-    <div class="plantillas-grid">
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:1.5rem">
+    <button onclick="selPlantilla(this,'harvard');showPreview('harvard')" class="plantilla-card active" style="border:none;cursor:pointer;padding:0.75rem 0.5rem;text-align:center">
+      <div style="width:32px;height:40px;margin:0 auto 6px;background:#F5F0E8;border:1px solid rgba(165,28,48,0.3);border-radius:4px;overflow:hidden;padding:3px">
+        <div style="height:2px;background:#A51C30;margin-bottom:2px"></div>
+        <div style="height:1px;background:rgba(30,30,30,0.15);margin-bottom:1px;width:90%"></div>
+        <div style="height:1px;background:rgba(30,30,30,0.15);width:70%"></div>
+      </div>
+      <div class="plantilla-name" style="font-size:0.68rem">Harvard</div>
+    </button>
+    <button onclick="selPlantilla(this,'clasico');showPreview('clasico')" class="plantilla-card" style="border:none;cursor:pointer;padding:0.75rem 0.5rem;text-align:center">
+      <div style="width:32px;height:40px;margin:0 auto 6px;background:#fff;border:1px solid rgba(44,62,122,0.2);border-radius:4px;overflow:hidden">
+        <div style="height:10px;background:#2C3E7A"></div>
+        <div style="padding:2px 3px"><div style="height:1px;background:rgba(44,62,122,0.2);margin-bottom:1px"></div><div style="height:1px;background:rgba(44,62,122,0.15);width:70%"></div></div>
+      </div>
+      <div class="plantilla-name" style="font-size:0.68rem">Clásico</div>
+    </button>
+    <button onclick="selPlantilla(this,'latam');showPreview('latam')" class="plantilla-card" style="border:none;cursor:pointer;padding:0.75rem 0.5rem;text-align:center">
+      <div style="width:32px;height:40px;margin:0 auto 6px;background:#0B1F3A;border:1px solid rgba(0,200,150,0.2);border-radius:4px;overflow:hidden;border-left:2px solid #00C896">
+        <div style="height:1px;background:#00C896;margin:4px 2px 2px;opacity:0.5"></div>
+        <div style="height:1px;background:rgba(245,240,232,0.15);margin:0 2px;width:80%"></div>
+      </div>
+      <div class="plantilla-name" style="font-size:0.68rem">LATAM Pro</div>
+    </button>
+    <button onclick="selPlantilla(this,'moderno');showPreview('moderno')" class="plantilla-card" style="border:none;cursor:pointer;padding:0.75rem 0.5rem;text-align:center">
+      <div style="width:32px;height:40px;margin:0 auto 6px;background:#fff;border:1px solid rgba(0,200,150,0.15);border-radius:4px;overflow:hidden;display:flex">
+        <div style="width:35%;background:#0B1F3A"></div>
+        <div style="flex:1;padding:2px"><div style="height:1px;background:rgba(11,31,58,0.2);margin-bottom:2px"></div><div style="height:1px;background:#00C896;opacity:0.5"></div></div>
+      </div>
+      <div class="plantilla-name" style="font-size:0.68rem">Moderno</div>
+    </button>
+    <button onclick="selPlantilla(this,'creativo');showPreview('creativo')" class="plantilla-card" style="border:none;cursor:pointer;padding:0.75rem 0.5rem;text-align:center">
+      <div style="width:32px;height:40px;margin:0 auto 6px;background:#FAFAF8;border:1px solid rgba(13,13,13,0.1);border-radius:4px;overflow:hidden;display:flex">
+        <div style="width:32%;background:#0D0D0D"><div style="height:1px;background:#F5C842;margin:3px 1px 0"></div></div>
+        <div style="flex:1;padding:2px"><div style="height:1px;background:rgba(13,13,13,0.15);margin-bottom:2px"></div><div style="height:1px;background:#F5C842;opacity:0.6;width:60%"></div></div>
+      </div>
+      <div class="plantilla-name" style="font-size:0.68rem">Creativo</div>
+    </button>
+  </div>
+
+  <!-- MODAL PREVIEW -->
+  <div id="preview-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:500;align-items:center;justify-content:center;padding:1.5rem">
+    <div style="background:var(--blanco);border-radius:16px;padding:1.5rem;max-width:480px;width:100%;max-height:90vh;overflow-y:auto">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
+        <div style="font-family:var(--fd);font-size:1rem;font-weight:900;color:var(--noche)" id="preview-title">Vista previa</div>
+        <button onclick="closePreview()" style="background:transparent;border:none;font-size:1.2rem;cursor:pointer;color:rgba(15,34,53,0.4)">✕</button>
+      </div>
+      <div id="preview-content" style="border-radius:8px;overflow:hidden;border:1px solid rgba(15,34,53,0.1)"></div>
+      <button onclick="closePreview()" style="width:100%;margin-top:1rem;padding:0.75rem;background:var(--selva);color:#fff;font-family:var(--fd);font-size:0.9rem;font-weight:900;border:none;border-radius:10px;cursor:pointer">Elegir este estilo</button>
+    </div>
+  </div>
 
       <div class="plantilla-card active" onclick="selPlantilla(this,'harvard')">
         <div class="plantilla-preview" style="background:#F5F0E8;border:1px solid rgba(165,28,48,0.2);padding:6px;height:72px;overflow:hidden">
@@ -1434,7 +1481,64 @@ function downloadCreativo(){
   doc.save('CV_Creativo_'+safeName(d)+'.pdf');
 }
 
-// ── RESET ──
+function showPreview(estilo){
+  const modal=document.getElementById('preview-modal');
+  const content=document.getElementById('preview-content');
+  const title=document.getElementById('preview-title');
+  const previews={
+    harvard:`<div style="background:#F5F0E8;padding:20px;font-family:serif">
+      <div style="font-size:14px;font-weight:700;color:#1a1a1a;margin-bottom:2px">${cvData?.nombre||'Tu Nombre'}</div>
+      <div style="height:1.5px;background:#A51C30;margin-bottom:6px"></div>
+      <div style="font-size:8px;color:#666;margin-bottom:8px">${cvData?.tpl?.perfil?.slice(0,100)||'Perfil profesional optimizado...'}</div>
+      <div style="font-size:8px;font-weight:700;color:#A51C30;margin-bottom:3px">EXPERIENCIA</div>
+      <div style="height:0.5px;background:#A51C30;margin-bottom:4px"></div>
+      <div style="font-size:8px;color:#333">${cvData?.tpl?.exp?.[0]?.puesto||'Puesto · Empresa'}</div>
+    </div>`,
+    clasico:`<div style="background:#fff;font-family:sans-serif">
+      <div style="background:#2C3E7A;padding:12px 16px"><div style="font-size:13px;font-weight:700;color:#fff">${cvData?.nombre||'Tu Nombre'}</div></div>
+      <div style="padding:12px 16px"><div style="font-size:8px;color:#444;margin-bottom:6px">${cvData?.tpl?.perfil?.slice(0,100)||'Perfil profesional...'}</div>
+      <div style="font-size:8px;font-weight:700;color:#2C3E7A;margin-bottom:3px">EXPERIENCIA</div>
+      <div style="font-size:8px;color:#333">${cvData?.tpl?.exp?.[0]?.puesto||'Puesto · Empresa'}</div></div>
+    </div>`,
+    latam:`<div style="background:#0B1F3A;padding:16px;font-family:sans-serif">
+      <div style="border-left:3px solid #00C896;padding-left:10px;margin-bottom:8px">
+        <div style="font-size:13px;font-weight:700;color:#F7F2EA">${cvData?.nombre||'Tu Nombre'}</div>
+        <div style="font-size:8px;color:#00C896">${cvData?.tpl?.exp?.[0]?.puesto||'Puesto Profesional'}</div>
+      </div>
+      <div style="height:0.5px;background:rgba(0,200,150,0.3);margin-bottom:8px"></div>
+      <div style="font-size:8px;color:rgba(245,240,232,0.6)">${cvData?.tpl?.perfil?.slice(0,100)||'Perfil profesional...'}</div>
+    </div>`,
+    moderno:`<div style="background:#fff;font-family:sans-serif;display:flex;min-height:120px">
+      <div style="width:35%;background:#0B1F3A;padding:10px">
+        <div style="font-size:7px;color:#00C896;font-weight:700;margin-bottom:4px">SKILLS</div>
+        ${(cvData?.tpl?.skills||['Skill 1','Skill 2','Skill 3']).slice(0,4).map(s=>`<div style="font-size:7px;color:rgba(245,240,232,0.6);margin-bottom:2px">${s}</div>`).join('')}
+      </div>
+      <div style="flex:1;padding:10px">
+        <div style="font-size:11px;font-weight:700;color:#0B1F3A;margin-bottom:2px">${cvData?.nombre||'Tu Nombre'}</div>
+        <div style="height:0.5px;background:#00C896;margin-bottom:6px"></div>
+        <div style="font-size:7px;color:#444">${cvData?.tpl?.perfil?.slice(0,80)||'Perfil profesional...'}</div>
+      </div>
+    </div>`,
+    creativo:`<div style="background:#FAFAF8;font-family:sans-serif;display:flex;min-height:120px">
+      <div style="width:32%;background:#0D0D0D;padding:10px">
+        <div style="height:1px;background:#F5C842;margin-bottom:6px"></div>
+        <div style="font-size:7px;color:rgba(255,255,255,0.6);margin-bottom:2px">${cvData?.nombre?.split(' ')[0]||'Nombre'}</div>
+        ${(cvData?.tpl?.skills||['Skill 1','Skill 2']).slice(0,3).map(s=>`<div style="font-size:6px;color:rgba(255,255,255,0.4);margin-bottom:1px">${s}</div>`).join('')}
+      </div>
+      <div style="flex:1;padding:10px">
+        <div style="font-size:11px;font-weight:700;color:#0D0D0D;margin-bottom:1px">${cvData?.nombre||'Tu Nombre'}</div>
+        <div style="height:1px;background:#F5C842;width:40%;margin-bottom:6px"></div>
+        <div style="font-size:7px;color:#444">${cvData?.tpl?.perfil?.slice(0,80)||'Perfil profesional...'}</div>
+      </div>
+    </div>`
+  };
+  const names={harvard:'Harvard · Clásico americano',clasico:'Clásico · Header azul',latam:'LATAM Pro · Fondo oscuro',moderno:'Moderno · Sidebar',creativo:'Creativo · Negro y dorado'};
+  title.textContent=names[estilo]||estilo;
+  content.innerHTML=previews[estilo]||'';
+  modal.style.display='flex';
+}
+function closePreview(){document.getElementById('preview-modal').style.display='none';}
+
 function doReset(){
   document.getElementById('res').classList.remove('on');
   document.getElementById('main-content').style.display='block';
