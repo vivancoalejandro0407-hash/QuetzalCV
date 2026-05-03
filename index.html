@@ -1225,15 +1225,18 @@ function renderResults(d){
     el.style.strokeDashoffset=off;
     el.style.stroke=score<40?'#E83A2A':score<65?'#F5C842':'#00C896';
   },200);
-  document.getElementById('r-pais').textContent=pais;
-  document.getElementById('r-diag').textContent=e.diag||'';
-  document.getElementById('r-urg').textContent=e.urg||'';
-  document.getElementById('r-perfil').textContent=t.perfil||'';
-  document.getElementById('r-promesa').textContent=e.promesa||'Los algoritmos detectan patrones. Alejandro sabe lo que los reclutadores realmente buscan en LATAM.';
-  document.getElementById('r-sen').textContent=t.seniority||'—';
-  document.getElementById('r-fmt').textContent=u.formato||'Ejecutivo';
-  document.getElementById('r-mkt').textContent=pais;
-  document.getElementById('r-li').textContent=u.linkedin||'';
+  const setEl=(id,val)=>{const el=document.getElementById(id);if(el)el.textContent=val;};
+  setEl('r-score',score);
+  setEl('r-score-txt',score);
+  setEl('r-pais',pais);
+  setEl('r-diag',e.diag||'');
+  setEl('r-urg',e.urg||'');
+  setEl('r-perfil',t.perfil||'');
+  setEl('r-promesa',e.promesa||'Los algoritmos detectan patrones. Alejandro sabe lo que los reclutadores realmente buscan en LATAM.');
+  setEl('r-sen',t.seniority||'—');
+  setEl('r-fmt',u.formato||'Ejecutivo');
+  setEl('r-mkt',pais);
+  setEl('r-li',u.linkedin||'');
   const ec=document.getElementById('r-exp');ec.innerHTML='';
   (t.exp||[]).forEach(x=>{
     const c=document.createElement('div');c.className='excard';
