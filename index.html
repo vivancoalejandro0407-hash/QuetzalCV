@@ -646,8 +646,12 @@ h1 span{color:var(--dorado)}
   <div class="banner">
     <div>
       <div class="blbl">Diagnóstico Quetzal-CV · <span id="r-pais"></span></div>
-      <div class="bh">Score de competitividad: <span id="r-score-txt">--</span>/100</div>
-      <div class="bdiag" id="r-diag"></div>
+      <div class="bh">Tu score de competitividad</div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.75rem">
+        <span style="font-family:'Fraunces',serif;font-size:3rem;font-weight:900;color:#00C896;line-height:1"><span id="r-score-txt">--</span></span>
+        <span style="font-size:1rem;color:rgba(245,240,232,0.3);font-weight:300">/100</span>
+      </div>
+      <div class="bdiag" id="r-diag" style="font-size:0.9rem;line-height:1.6;color:rgba(245,240,232,0.7);max-width:340px"></div>
     </div>
     <div class="sring">
       <svg viewBox="0 0 134 134">
@@ -658,12 +662,21 @@ h1 span{color:var(--dorado)}
     </div>
   </div>
 
-  <div class="alert-box" id="r-urg"></div>
+  <div class="alert-box" id="r-urg" style="font-size:0.88rem;line-height:1.6"></div>
 
-  <div class="mrow">
-    <div class="mc"><div class="ml">Seniority</div><div class="mv"><span class="badge b-esm" id="r-sen">—</span></div></div>
-    <div class="mc"><div class="ml">Formato ideal</div><div class="mv"><span class="badge b-dor" id="r-fmt">—</span></div></div>
-    <div class="mc"><div class="ml">Mercado</div><div class="mv" id="r-mkt" style="font-family:var(--fd);font-size:0.92rem;font-weight:900;color:var(--arena)">—</div></div>
+  <div class="mrow" style="margin-bottom:1.5rem">
+    <div class="mc" style="padding:1rem;border-radius:10px;background:rgba(0,200,150,0.05);border:1px solid rgba(0,200,150,0.1)">
+      <div class="ml" style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:rgba(245,240,232,0.35);margin-bottom:6px">Nivel profesional</div>
+      <div class="mv"><span class="badge b-esm" id="r-sen" style="font-size:0.82rem;padding:4px 12px">—</span></div>
+    </div>
+    <div class="mc" style="padding:1rem;border-radius:10px;background:rgba(245,200,66,0.05);border:1px solid rgba(245,200,66,0.1)">
+      <div class="ml" style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:rgba(245,240,232,0.35);margin-bottom:6px">Formato recomendado</div>
+      <div class="mv"><span class="badge b-dor" id="r-fmt" style="font-size:0.82rem;padding:4px 12px">—</span></div>
+    </div>
+    <div class="mc" style="padding:1rem;border-radius:10px;background:rgba(245,240,232,0.03);border:1px solid rgba(245,240,232,0.06)">
+      <div class="ml" style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:rgba(245,240,232,0.35);margin-bottom:6px">Mercado objetivo</div>
+      <div class="mv" id="r-mkt" style="font-family:var(--fd);font-size:0.92rem;font-weight:900;color:var(--arena)">—</div>
+    </div>
   </div>
 
   <div class="sh"><div class="sico" style="background:rgba(0,200,150,0.1)"><svg viewBox="0 0 20 20" fill="#00C896"><path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"/></svg></div><div class="stit">Perfil profesional optimizado</div><div class="sline"></div></div>
@@ -682,26 +695,91 @@ h1 span{color:var(--dorado)}
   <div class="sh" style="margin-top:2.2rem"><div class="sico" style="background:rgba(245,200,66,0.1)"><svg viewBox="0 0 20 20" fill="#F5C842"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg></div><div class="stit">Elige el estilo de tu CV</div><div class="sline"></div></div>
   <div style="margin-bottom:1.5rem">
     <div class="plantillas-grid">
+
       <div class="plantilla-card active" onclick="selPlantilla(this,'harvard')">
-        <div class="plantilla-preview prev-harvard"><div class="ph-name"></div><div class="ph-line"></div><div class="ph-row"></div><div class="ph-row s"></div><div class="ph-row"></div></div>
-        <div class="plantilla-name">Harvard</div><div class="plantilla-desc">Clásico ejecutivo</div>
+        <div class="plantilla-preview" style="background:#F5F0E8;border:1px solid rgba(165,28,48,0.2);padding:6px;height:72px;overflow:hidden">
+          <div style="height:4px;background:#A51C30;border-radius:1px;margin-bottom:3px;width:65%;opacity:0.8"></div>
+          <div style="height:1.5px;background:#A51C30;margin-bottom:4px"></div>
+          <div style="height:2px;background:rgba(30,30,30,0.15);border-radius:1px;margin-bottom:2px;width:90%"></div>
+          <div style="height:2px;background:rgba(30,30,30,0.15);border-radius:1px;margin-bottom:2px;width:75%"></div>
+          <div style="height:1.5px;background:#A51C30;margin:4px 0 3px;opacity:0.5"></div>
+          <div style="height:2px;background:rgba(30,30,30,0.12);border-radius:1px;margin-bottom:2px;width:80%"></div>
+          <div style="height:2px;background:rgba(30,30,30,0.12);border-radius:1px;width:60%"></div>
+        </div>
+        <div class="plantilla-name">Harvard</div>
+        <div class="plantilla-desc">Fondo claro · línea roja</div>
       </div>
+
       <div class="plantilla-card" onclick="selPlantilla(this,'clasico')">
-        <div class="plantilla-preview prev-clasico"><div class="pc-top"></div><div class="pc-row s"></div><div class="pc-row"></div><div class="pc-row s"></div><div class="pc-row"></div></div>
-        <div class="plantilla-name">Clásico</div><div class="plantilla-desc">Estilo europeo</div>
+        <div class="plantilla-preview" style="background:#fff;border:1px solid rgba(44,62,122,0.2);padding:0;height:72px;overflow:hidden">
+          <div style="height:18px;background:#2C3E7A;display:flex;align-items:center;padding:0 5px">
+            <div style="height:3px;background:rgba(255,255,255,0.5);border-radius:1px;width:55%"></div>
+          </div>
+          <div style="padding:4px 5px">
+            <div style="height:2px;background:rgba(44,62,122,0.2);border-radius:1px;margin-bottom:2px;width:80%"></div>
+            <div style="height:2px;background:rgba(44,62,122,0.2);border-radius:1px;margin-bottom:2px;width:60%"></div>
+            <div style="height:2px;background:rgba(44,62,122,0.15);border-radius:1px;margin-bottom:2px;width:85%"></div>
+            <div style="height:2px;background:rgba(44,62,122,0.15);border-radius:1px;width:50%"></div>
+          </div>
+        </div>
+        <div class="plantilla-name">Clásico</div>
+        <div class="plantilla-desc">Header azul marino</div>
       </div>
+
       <div class="plantilla-card" onclick="selPlantilla(this,'latam')">
-        <div class="plantilla-preview prev-latam"><div class="pl-left"><div class="pl-avatar"></div></div><div class="pl-right"><div class="pl-row dark"></div><div class="pl-row"></div><div class="pl-row"></div><div class="pl-row dark" style="width:45%"></div></div></div>
-        <div class="plantilla-name">LATAM Pro</div><div class="plantilla-desc">Con foto</div>
+        <div class="plantilla-preview" style="background:#0B1F3A;border:1px solid rgba(0,200,150,0.2);padding:0;height:72px;overflow:hidden;display:flex;flex-direction:column">
+          <div style="height:26px;background:#0B1F3A;display:flex;align-items:center;padding:4px 5px;gap:4px;border-left:3px solid #00C896">
+            <div style="width:14px;height:14px;border-radius:50%;background:rgba(0,200,150,0.3);flex-shrink:0"></div>
+            <div style="flex:1"><div style="height:2.5px;background:rgba(245,240,232,0.4);border-radius:1px;margin-bottom:2px;width:70%"></div><div style="height:1.5px;background:#00C896;border-radius:1px;width:45%;opacity:0.6"></div></div>
+          </div>
+          <div style="padding:4px 5px;flex:1">
+            <div style="height:1.5px;background:#00C896;margin-bottom:3px;opacity:0.4"></div>
+            <div style="height:2px;background:rgba(245,240,232,0.15);border-radius:1px;margin-bottom:2px;width:85%"></div>
+            <div style="height:2px;background:rgba(245,240,232,0.15);border-radius:1px;width:60%"></div>
+          </div>
+        </div>
+        <div class="plantilla-name">LATAM Pro</div>
+        <div class="plantilla-desc">Oscuro · con foto</div>
       </div>
+
       <div class="plantilla-card" onclick="selPlantilla(this,'moderno')">
-        <div class="plantilla-preview prev-moderno"><div class="pm-left"><div class="pm-row accent"></div><div class="pm-row"></div><div class="pm-row accent" style="width:40%"></div></div><div class="pm-right"><div class="pm-rrow t"></div><div class="pm-rrow"></div><div class="pm-rrow t" style="width:40%"></div></div></div>
-        <div class="plantilla-name">Moderno</div><div class="plantilla-desc">Dos columnas</div>
+        <div class="plantilla-preview" style="background:#fff;border:1px solid rgba(0,200,150,0.15);padding:0;height:72px;overflow:hidden;display:flex">
+          <div style="width:32%;background:#0B1F3A;padding:4px 3px">
+            <div style="height:2px;background:#00C896;border-radius:1px;margin-bottom:2px;width:80%"></div>
+            <div style="height:10px;background:rgba(0,200,150,0.2);border-radius:2px;margin-bottom:3px"></div>
+            <div style="height:2px;background:rgba(245,240,232,0.2);border-radius:1px;margin-bottom:2px;width:70%"></div>
+            <div style="height:2px;background:rgba(245,240,232,0.2);border-radius:1px;width:55%"></div>
+          </div>
+          <div style="flex:1;padding:4px 4px">
+            <div style="height:3px;background:rgba(11,31,58,0.2);border-radius:1px;margin-bottom:3px;width:75%"></div>
+            <div style="height:1.5px;background:#00C896;margin-bottom:3px;opacity:0.5"></div>
+            <div style="height:2px;background:rgba(11,31,58,0.1);border-radius:1px;margin-bottom:2px;width:90%"></div>
+            <div style="height:2px;background:rgba(11,31,58,0.1);border-radius:1px;width:65%"></div>
+          </div>
+        </div>
+        <div class="plantilla-name">Moderno</div>
+        <div class="plantilla-desc">Sidebar · dos columnas</div>
       </div>
+
       <div class="plantilla-card" onclick="selPlantilla(this,'creativo')">
-        <div class="plantilla-preview prev-creativo"><div class="pc-left"><div class="pcc-dot"></div><div class="pcc-row a"></div><div class="pcc-row"></div></div><div class="pcc-right"><div class="pcc-rrow t"></div><div class="pcc-rrow"></div><div class="pcc-rrow t" style="width:40%"></div></div></div>
-        <div class="plantilla-name">Creativo</div><div class="plantilla-desc">Barra lateral</div>
+        <div class="plantilla-preview" style="background:#FAFAF8;border:1px solid rgba(13,13,13,0.1);padding:0;height:72px;overflow:hidden;display:flex">
+          <div style="width:30%;background:#0D0D0D;padding:4px 3px">
+            <div style="height:2px;background:#F5C842;border-radius:1px;margin-bottom:4px;width:100%"></div>
+            <div style="height:10px;background:rgba(245,200,66,0.15);border-radius:2px;margin-bottom:3px"></div>
+            <div style="height:2px;background:rgba(255,255,255,0.2);border-radius:1px;margin-bottom:2px;width:80%"></div>
+            <div style="height:2px;background:rgba(255,255,255,0.2);border-radius:1px;width:55%"></div>
+          </div>
+          <div style="flex:1;padding:4px 4px">
+            <div style="height:3px;background:rgba(13,13,13,0.15);border-radius:1px;margin-bottom:3px;width:70%"></div>
+            <div style="height:2px;background:#F5C842;margin-bottom:3px;width:35%;opacity:0.8"></div>
+            <div style="height:2px;background:rgba(13,13,13,0.1);border-radius:1px;margin-bottom:2px;width:85%"></div>
+            <div style="height:2px;background:rgba(13,13,13,0.1);border-radius:1px;width:60%"></div>
+          </div>
+        </div>
+        <div class="plantilla-name">Creativo</div>
+        <div class="plantilla-desc">Negro · acento dorado</div>
       </div>
+
     </div>
   </div>
 
@@ -1106,9 +1184,7 @@ function isValidCode(code){
   const m=code.toUpperCase().match(/^CVPRO-2026-(\d{4})$/);
   if(!m)return false;
   const n=parseInt(m[1]);
-  const h=btoa('cv'+n+'qz').split('').reverse().join('');
-  const v=btoa('cv'+n+'qz').split('').reverse().join('');
-  return n>=1000&&n<=9000&&h===v&&(n%1!==0?false:true)&&n<=9000;
+  return n===1001;
 }
 function formatCode(input){let v=input.value.toUpperCase().replace(/[^A-Z0-9]/g,'');if(v.length>5)v=v.slice(0,5)+'-'+v.slice(5);if(v.length>10)v=v.slice(0,10)+'-'+v.slice(10);input.value=v.slice(0,14);document.getElementById('pm-err').classList.remove('show');input.classList.remove('error');}
 function openProModal(){if(proUnlocked){downloadCV();return;}document.getElementById('pro-modal').classList.add('on');document.getElementById('pm-input').value='';document.getElementById('pm-err').classList.remove('show');document.getElementById('pm-form-view').style.display='block';document.getElementById('pm-success-view').classList.remove('show');document.getElementById('pm-input').classList.remove('error','success');setTimeout(()=>document.getElementById('pm-input').focus(),200);}
