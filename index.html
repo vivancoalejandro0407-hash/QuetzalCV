@@ -268,9 +268,8 @@ h1 span{color:var(--dorado)}
 .dl-btn svg{width:13px;height:13px;fill:var(--noche2)}
 
 /* PRO SECTION */
-.pro-box{background:linear-gradient(135deg,rgba(11,31,58,0.95) 0%,rgba(6,77,56,0.4) 100%);border:1px solid rgba(0,200,150,0.15);border-radius:22px;padding:2.75rem;position:relative;overflow:hidden}
-.pro-box::before{content:'';position:absolute;right:-80px;bottom:-80px;width:280px;height:280px;border-radius:50%;background:var(--esmeralda);opacity:0.06}
-.pro-box::after{content:'';position:absolute;left:-50px;top:-50px;width:200px;height:200px;border-radius:50%;background:var(--dorado);opacity:0.04}
+.pro-box{background:#064D38;border:1.5px solid rgba(0,200,150,0.3);border-radius:22px;padding:2rem;position:relative;overflow:hidden}
+.pro-box::before{content:'';position:absolute;right:-80px;bottom:-80px;width:280px;height:280px;border-radius:50%;background:#00C896;opacity:0.06}
 .pro-inner{position:relative;z-index:1}
 .pro-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(0,200,150,0.1);border:1px solid rgba(0,200,150,0.2);border-radius:100px;padding:0.26rem 0.82rem;font-size:0.63rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--esmeralda);margin-bottom:0.5rem}
 .pro-precio{display:flex;align-items:baseline;gap:6px;margin-bottom:1rem}
@@ -698,108 +697,120 @@ h1 span{color:var(--dorado)}
   <div class="licard"><div class="liico"><svg viewBox="0 0 24 24"><path fill="#fff" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div><div><div class="lilbl">Error crítico detectado</div><div class="libody" id="r-li"></div></div></div>
 
   <!-- PRO SECTION -->
-  <div class="sh"><div class="sico" style="background:rgba(0,200,150,0.1)"><svg viewBox="0 0 20 20" fill="#00C896"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div><div class="stit">Plan Pro · Rediseño con Alejandro</div><div class="sline"></div></div>
-  <div class="pro-box">
-    <div class="pro-inner">
-      <div class="pro-tag">Cupos limitados · Servicio personalizado</div>
-      <div style="font-size:0.78rem;color:rgba(245,240,232,0.35);font-style:italic;margin-bottom:1rem;line-height:1.6;padding:0.75rem 1rem;background:rgba(255,255,255,0.04);border-radius:8px">Un reclutador reconoce un CV de Canva o de plantilla en 3 segundos. Alejandro sabe exactamente por qué — y cómo evitarlo.</div>
-      <div class="pro-precio">
-        <span class="pro-precio-num" id="pro-precio-num">$249</span>
-        <span class="pro-precio-mon" id="pro-precio-mon">MXN · precio de lanzamiento</span>
+  <!-- PRO SECTION -->
+  <div style="background:#053D2C;border:1.5px solid rgba(0,200,150,0.3);border-radius:18px;padding:1.75rem;margin-bottom:1.5rem">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+      <div>
+        <div style="font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(0,200,150,0.6);margin-bottom:6px">Siguiente paso</div>
+        <div style="font-family:var(--fd);font-size:1.2rem;font-weight:900;color:var(--arena);margin-bottom:4px">Que Alejandro lo transforme</div>
+        <div style="font-size:0.78rem;color:rgba(245,240,232,0.45);line-height:1.6">CV revisado · LinkedIn · Carta de presentación</div>
       </div>
-      <div class="pro-precio-equiv" id="pro-precio-equiv" style="margin-bottom:1rem;font-size:0.68rem;color:rgba(245,240,232,0.25)">Precio de lanzamiento</div>
-      <div class="pro-titulo">La IA llegó hasta aquí.<br>Alejandro lleva tu CV <span>al siguiente nivel.</span></div>
-      <div class="pro-sub" id="r-promesa">Los algoritmos detectan patrones. Alejandro sabe lo que los reclutadores realmente buscan en LATAM — lo que no aparece en ningún manual.</div>
-      <ul class="pro-list">
-        <li>Revisión o rediseño completo del CV con voz ejecutiva personalizada</li>
-        <li>Optimización de LinkedIn: titular, extracto y keywords de búsqueda</li>
-        <li>Carta de presentación adaptada a tu industria y mercado</li>
-        <li>Seguimiento 30 días hasta conseguir entrevistas confirmadas</li>
-      </ul>
-      <div style="display:flex;align-items:flex-start;gap:10px;background:rgba(0,200,150,0.06);border:1px solid rgba(0,200,150,0.15);border-radius:10px;padding:1rem 1.1rem;margin-bottom:1.5rem">
-        <svg viewBox="0 0 20 20" fill="#00C896" width="18" height="18" style="flex-shrink:0;margin-top:1px"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-        <div>
-          <div style="font-size:0.82rem;font-weight:700;color:#00C896;margin-bottom:3px">Garantía de entrevistas en 30 días</div>
-          <div style="font-size:0.76rem;color:rgba(245,240,232,0.45);font-weight:300;line-height:1.5">Si en 30 días de haber enviado tu CV rediseñado no consigues al menos una entrevista, Alejandro te da una segunda revisión sin costo adicional.</div>
-        </div>
-      </div>
-      <div class="pro-btns">
-        <a id="btn-pago-digital" href="https://mpago.li/18486c8" target="_blank" class="btn-wa" style="background:var(--esmeralda);color:var(--noche2);font-weight:800;justify-content:center;gap:8px">
+      <div style="text-align:center">
+        <div style="font-family:var(--fd);font-size:2rem;font-weight:900;color:#00C896;line-height:1" id="pro-precio-num">$249</div>
+        <div style="font-size:0.7rem;color:rgba(245,240,232,0.35);margin-bottom:10px" id="pro-precio-mon">MXN · lanzamiento</div>
+        <div id="pro-precio-equiv" style="display:none"></div>
+        <a id="btn-pago-digital" href="https://mpago.li/18486c8" target="_blank" style="display:flex;align-items:center;gap:8px;background:#00A87A;color:#0B1F3A;font-family:var(--fd);font-size:0.9rem;font-weight:900;padding:0.75rem 1.25rem;border-radius:10px;text-decoration:none;white-space:nowrap">
           <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/><path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"/></svg>
           <span>Pagar con Mercado Pago</span>
         </a>
-        <div id="paypal-container-Z6THR8FT3CE5S" style="display:none;width:100%;margin-top:0.5rem"></div>
-      </div>
-      <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:1.25rem;flex-wrap:wrap">
-        <span style="font-size:0.65rem;color:rgba(245,240,232,0.25);letter-spacing:0.05em;text-transform:uppercase">Pagos aceptados</span>
-        <div style="display:flex;align-items:center;gap:6px">
-          <span style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);border-radius:5px;padding:3px 8px;font-size:0.65rem;font-weight:600;color:rgba(245,240,232,0.5)">Mercado Pago</span>
-          <span style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);border-radius:5px;padding:3px 8px;font-size:0.65rem;font-weight:600;color:rgba(245,240,232,0.5)">PayPal</span>
-          <span style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);border-radius:5px;padding:3px 8px;font-size:0.65rem;font-weight:600;color:rgba(245,240,232,0.5)">Transferencia · 🇲🇽</span>
-          <span style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);border-radius:5px;padding:3px 8px;font-size:0.65rem;font-weight:600;color:rgba(245,240,232,0.5)">Stripe</span>
-        </div>
-      </div>
-      <div class="pro-bio" style="align-items:flex-start">
-        <div style="flex-shrink:0">
-          <img src="data:image/jpeg;base64,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" alt="Alejandro Vivanco" style="width:70px;height:70px;object-fit:cover;object-position:center top;border-radius:12px;border:2px solid rgba(0,200,150,0.2)">
-        </div>
-        <div>
-          <a href="https://www.linkedin.com/in/vivancoalejandro/" target="_blank" style="text-decoration:none;display:flex;align-items:center;gap:6px;margin-bottom:4px">
-            <span class="bio-name" style="font-size:0.95rem">Alejandro Vivanco</span>
-            <svg viewBox="0 0 16 16" fill="#00C896" width="12" height="12"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
-          </a>
-          <div class="bio-desc" style="margin-bottom:5px">Experto en empleabilidad ejecutiva · Guadalajara, México</div>
-          <div class="bio-desc">15 años contratando y seleccionando los mejores perfiles en México, Colombia, Argentina, Chile y Perú · +2,000 profesionales asesorados</div>
-        </div>
-      </div>
       </div>
     </div>
+    <div id="paypal-container-Z6THR8FT3CE5S" style="display:none;width:100%;margin-top:0.75rem"></div>
+    <div style="margin-top:0.75rem;font-size:0.63rem;color:rgba(245,240,232,0.2);text-align:center">Mercado Pago · PayPal · Transferencia 🇲🇽 · Al pagar recibes tu código</div>
   </div>
 
   <!-- SELECTOR PLANTILLAS -->
   <div class="sh" style="margin-top:2.2rem"><div class="sico" style="background:rgba(245,200,66,0.1)"><svg viewBox="0 0 20 20" fill="#F5C842"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg></div><div class="stit">Elige el estilo de tu CV</div><div class="sline"></div></div>
-  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:1.5rem">
-    <button onclick="selPlantilla(this,'harvard');showPreview('harvard')" class="plantilla-card active" style="border:none;cursor:pointer;padding:0.75rem 0.5rem;text-align:center">
-      <div style="width:32px;height:40px;margin:0 auto 6px;background:#F5F0E8;border:1px solid rgba(165,28,48,0.3);border-radius:4px;overflow:hidden;padding:3px">
-        <div style="height:2px;background:#A51C30;margin-bottom:2px"></div>
-        <div style="height:1px;background:rgba(30,30,30,0.15);margin-bottom:1px;width:90%"></div>
-        <div style="height:1px;background:rgba(30,30,30,0.15);width:70%"></div>
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:1.5rem">
+
+    <div class="plantilla-card active" onclick="selPlantilla(this,'harvard')" style="cursor:pointer;padding:0.6rem;text-align:center">
+      <div style="width:48px;height:64px;margin:0 auto 6px;background:#F5F0E8;border:1px solid rgba(165,28,48,0.25);border-radius:3px;overflow:hidden;padding:4px 3px">
+        <div style="height:2.5px;background:#A51C30;border-radius:1px;margin-bottom:2px;width:70%"></div>
+        <div style="height:1px;background:#A51C30;margin-bottom:3px"></div>
+        <div style="height:1.5px;background:rgba(30,30,30,0.12);border-radius:1px;margin-bottom:1.5px;width:90%"></div>
+        <div style="height:1.5px;background:rgba(30,30,30,0.12);border-radius:1px;margin-bottom:1.5px;width:75%"></div>
+        <div style="height:1px;background:#A51C30;margin:3px 0 2px;opacity:0.4"></div>
+        <div style="height:1.5px;background:rgba(30,30,30,0.1);border-radius:1px;margin-bottom:1.5px;width:80%"></div>
+        <div style="height:1.5px;background:rgba(30,30,30,0.1);border-radius:1px;width:60%"></div>
       </div>
-      <div class="plantilla-name" style="font-size:0.68rem">Harvard</div>
-    </button>
-    <button onclick="selPlantilla(this,'clasico');showPreview('clasico')" class="plantilla-card" style="border:none;cursor:pointer;padding:0.75rem 0.5rem;text-align:center">
-      <div style="width:32px;height:40px;margin:0 auto 6px;background:#fff;border:1px solid rgba(44,62,122,0.2);border-radius:4px;overflow:hidden">
-        <div style="height:10px;background:#2C3E7A"></div>
-        <div style="padding:2px 3px"><div style="height:1px;background:rgba(44,62,122,0.2);margin-bottom:1px"></div><div style="height:1px;background:rgba(44,62,122,0.15);width:70%"></div></div>
+      <div class="plantilla-name" style="font-size:0.67rem">Harvard</div>
+      <div class="plantilla-desc" style="font-size:0.6rem">Línea roja</div>
+    </div>
+
+    <div class="plantilla-card" onclick="selPlantilla(this,'clasico')" style="cursor:pointer;padding:0.6rem;text-align:center">
+      <div style="width:48px;height:64px;margin:0 auto 6px;background:#fff;border:1px solid rgba(44,62,122,0.2);border-radius:3px;overflow:hidden">
+        <div style="height:14px;background:#2C3E7A;display:flex;align-items:center;padding:0 3px">
+          <div style="height:2px;background:rgba(255,255,255,0.5);border-radius:1px;width:60%"></div>
+        </div>
+        <div style="padding:3px">
+          <div style="height:1.5px;background:rgba(44,62,122,0.2);border-radius:1px;margin-bottom:1.5px;width:85%"></div>
+          <div style="height:1.5px;background:rgba(44,62,122,0.15);border-radius:1px;margin-bottom:1.5px;width:65%"></div>
+          <div style="height:1.5px;background:rgba(44,62,122,0.12);border-radius:1px;width:80%"></div>
+        </div>
       </div>
-      <div class="plantilla-name" style="font-size:0.68rem">Clásico</div>
-    </button>
-    <button onclick="selPlantilla(this,'latam');showPreview('latam')" class="plantilla-card" style="border:none;cursor:pointer;padding:0.75rem 0.5rem;text-align:center">
-      <div style="width:32px;height:40px;margin:0 auto 6px;background:#0B1F3A;border:1px solid rgba(0,200,150,0.2);border-radius:4px;overflow:hidden;border-left:2px solid #00C896">
-        <div style="height:1px;background:#00C896;margin:4px 2px 2px;opacity:0.5"></div>
-        <div style="height:1px;background:rgba(245,240,232,0.15);margin:0 2px;width:80%"></div>
+      <div class="plantilla-name" style="font-size:0.67rem">Clásico</div>
+      <div class="plantilla-desc" style="font-size:0.6rem">Header azul</div>
+    </div>
+
+    <div class="plantilla-card" onclick="selPlantilla(this,'latam')" style="cursor:pointer;padding:0.6rem;text-align:center">
+      <div style="width:48px;height:64px;margin:0 auto 6px;background:#0B1F3A;border:1px solid rgba(0,200,150,0.2);border-radius:3px;overflow:hidden">
+        <div style="height:18px;background:#0B1F3A;border-left:2.5px solid #00C896;padding:3px 3px;display:flex;align-items:center;gap:2px">
+          <div style="width:10px;height:10px;border-radius:50%;background:rgba(0,200,150,0.25);flex-shrink:0"></div>
+          <div style="flex:1"><div style="height:1.5px;background:rgba(245,240,232,0.3);margin-bottom:1.5px;width:80%"></div><div style="height:1px;background:#00C896;width:50%;opacity:0.5"></div></div>
+        </div>
+        <div style="padding:3px">
+          <div style="height:1px;background:#00C896;opacity:0.3;margin-bottom:2px"></div>
+          <div style="height:1.5px;background:rgba(245,240,232,0.12);border-radius:1px;margin-bottom:1.5px;width:85%"></div>
+          <div style="height:1.5px;background:rgba(245,240,232,0.12);border-radius:1px;width:65%"></div>
+        </div>
       </div>
-      <div class="plantilla-name" style="font-size:0.68rem">LATAM Pro</div>
-    </button>
-    <button onclick="selPlantilla(this,'moderno');showPreview('moderno')" class="plantilla-card" style="border:none;cursor:pointer;padding:0.75rem 0.5rem;text-align:center">
-      <div style="width:32px;height:40px;margin:0 auto 6px;background:#fff;border:1px solid rgba(0,200,150,0.15);border-radius:4px;overflow:hidden;display:flex">
-        <div style="width:35%;background:#0B1F3A"></div>
-        <div style="flex:1;padding:2px"><div style="height:1px;background:rgba(11,31,58,0.2);margin-bottom:2px"></div><div style="height:1px;background:#00C896;opacity:0.5"></div></div>
+      <div class="plantilla-name" style="font-size:0.67rem">LATAM Pro</div>
+      <div class="plantilla-desc" style="font-size:0.6rem">Oscuro · foto</div>
+    </div>
+
+    <div class="plantilla-card" onclick="selPlantilla(this,'moderno')" style="cursor:pointer;padding:0.6rem;text-align:center">
+      <div style="width:48px;height:64px;margin:0 auto 6px;background:#fff;border:1px solid rgba(0,200,150,0.15);border-radius:3px;overflow:hidden;display:flex">
+        <div style="width:35%;background:#0B1F3A;padding:3px 2px">
+          <div style="height:1.5px;background:#00C896;border-radius:1px;margin-bottom:2px;width:90%"></div>
+          <div style="height:8px;background:rgba(0,200,150,0.15);border-radius:1px;margin-bottom:2px"></div>
+          <div style="height:1.5px;background:rgba(245,240,232,0.15);border-radius:1px;margin-bottom:1.5px;width:80%"></div>
+          <div style="height:1.5px;background:rgba(245,240,232,0.15);border-radius:1px;width:60%"></div>
+        </div>
+        <div style="flex:1;padding:3px">
+          <div style="height:2px;background:rgba(11,31,58,0.2);border-radius:1px;margin-bottom:2px;width:80%"></div>
+          <div style="height:1px;background:#00C896;margin-bottom:2px;opacity:0.5"></div>
+          <div style="height:1.5px;background:rgba(11,31,58,0.1);border-radius:1px;margin-bottom:1.5px;width:90%"></div>
+          <div style="height:1.5px;background:rgba(11,31,58,0.1);border-radius:1px;width:70%"></div>
+        </div>
       </div>
-      <div class="plantilla-name" style="font-size:0.68rem">Moderno</div>
-    </button>
-    <button onclick="selPlantilla(this,'creativo');showPreview('creativo')" class="plantilla-card" style="border:none;cursor:pointer;padding:0.75rem 0.5rem;text-align:center">
-      <div style="width:32px;height:40px;margin:0 auto 6px;background:#FAFAF8;border:1px solid rgba(13,13,13,0.1);border-radius:4px;overflow:hidden;display:flex">
-        <div style="width:32%;background:#0D0D0D"><div style="height:1px;background:#F5C842;margin:3px 1px 0"></div></div>
-        <div style="flex:1;padding:2px"><div style="height:1px;background:rgba(13,13,13,0.15);margin-bottom:2px"></div><div style="height:1px;background:#F5C842;opacity:0.6;width:60%"></div></div>
+      <div class="plantilla-name" style="font-size:0.67rem">Moderno</div>
+      <div class="plantilla-desc" style="font-size:0.6rem">Dos columnas</div>
+    </div>
+
+    <div class="plantilla-card" onclick="selPlantilla(this,'creativo')" style="cursor:pointer;padding:0.6rem;text-align:center">
+      <div style="width:48px;height:64px;margin:0 auto 6px;background:#FAFAF8;border:1px solid rgba(13,13,13,0.1);border-radius:3px;overflow:hidden;display:flex">
+        <div style="width:32%;background:#0D0D0D;padding:3px 2px">
+          <div style="height:1.5px;background:#F5C842;border-radius:1px;margin-bottom:3px;width:100%"></div>
+          <div style="height:8px;background:rgba(245,200,66,0.12);border-radius:1px;margin-bottom:2px"></div>
+          <div style="height:1.5px;background:rgba(255,255,255,0.15);border-radius:1px;margin-bottom:1.5px;width:80%"></div>
+          <div style="height:1.5px;background:rgba(255,255,255,0.15);border-radius:1px;width:55%"></div>
+        </div>
+        <div style="flex:1;padding:3px">
+          <div style="height:2px;background:rgba(13,13,13,0.15);border-radius:1px;margin-bottom:1.5px;width:75%"></div>
+          <div style="height:1.5px;background:#F5C842;margin-bottom:2px;width:40%;opacity:0.7"></div>
+          <div style="height:1.5px;background:rgba(13,13,13,0.1);border-radius:1px;margin-bottom:1.5px;width:85%"></div>
+          <div style="height:1.5px;background:rgba(13,13,13,0.1);border-radius:1px;width:60%"></div>
+        </div>
       </div>
-      <div class="plantilla-name" style="font-size:0.68rem">Creativo</div>
-    </button>
+      <div class="plantilla-name" style="font-size:0.67rem">Creativo</div>
+      <div class="plantilla-desc" style="font-size:0.6rem">Negro · dorado</div>
+    </div>
+
   </div>
 
   <!-- MODAL PREVIEW -->
   <div id="preview-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:500;align-items:center;justify-content:center;padding:1.5rem">
-    <div style="background:var(--blanco);border-radius:16px;padding:1.5rem;max-width:480px;width:100%;max-height:90vh;overflow-y:auto">
+    <div style="background:var(--blanco);border-radius:16px;padding:1.5rem;max-width:420px;width:100%;max-height:90vh;overflow-y:auto">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
         <div style="font-family:var(--fd);font-size:1rem;font-weight:900;color:var(--noche)" id="preview-title">Vista previa</div>
         <button onclick="closePreview()" style="background:transparent;border:none;font-size:1.2rem;cursor:pointer;color:rgba(15,34,53,0.4)">✕</button>
@@ -897,16 +908,15 @@ h1 span{color:var(--dorado)}
   </div>
 
   <!-- DESCARGA -->
-  <div style="background:linear-gradient(135deg,rgba(0,168,122,0.12),rgba(0,200,150,0.06));border:1.5px solid rgba(0,200,150,0.3);border-radius:18px;padding:2rem;margin-bottom:2rem;text-align:center;position:relative;overflow:hidden">
-    <div style="position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:var(--esmeralda);opacity:0.06"></div>
-    <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--esmeralda3);margin-bottom:0.75rem">✓ Diagnóstico completado</div>
-    <div style="font-family:var(--fd);font-size:1.6rem;font-weight:900;color:var(--arena);line-height:1.1;margin-bottom:0.5rem">Tu CV optimizado<br>te está esperando</div>
-    <div style="font-size:0.85rem;color:rgba(245,240,232,0.45);margin-bottom:1.5rem;line-height:1.6">Ingresa tu código Pro y descárgalo en cualquiera de los 5 estilos profesionales</div>
-    <button onclick="openProModal()" style="display:inline-flex;align-items:center;gap:10px;background:var(--esmeralda);color:var(--noche2);font-family:var(--fd);font-size:1rem;font-weight:900;padding:0.9rem 2rem;border:none;border-radius:12px;cursor:pointer;transition:all 0.2s;margin-bottom:1rem" onmouseover="this.style.background='#00C896';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='var(--esmeralda)';this.style.transform='translateY(0)'">
-      <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"/></svg>
-      Descargar mi CV en PDF
+  <div style="border:1.5px solid rgba(0,200,150,0.2);border-radius:14px;padding:1.25rem;margin-bottom:2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+    <div>
+      <div style="font-family:var(--fd);font-size:1rem;font-weight:900;color:var(--arena);margin-bottom:3px">¿Ya pagaste?</div>
+      <div style="font-size:0.78rem;color:rgba(245,240,232,0.4)">Ingresa tu código y descarga tu CV</div>
+    </div>
+    <button onclick="openProModal()" style="display:inline-flex;align-items:center;gap:8px;background:var(--esmeralda);color:var(--noche2);font-family:var(--fd);font-size:0.88rem;font-weight:900;padding:0.75rem 1.25rem;border:none;border-radius:10px;cursor:pointer;white-space:nowrap">
+      <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"/></svg>
+      Ingresar código
     </button>
-    <div style="font-size:0.72rem;color:rgba(245,240,232,0.25)">¿No tienes código? Contrata el Plan Pro con Alejandro y lo recibes al instante</div>
   </div>
 
   <div style="text-align:center;margin:2rem 0 0.5rem">
